@@ -34,7 +34,6 @@ body {
     env(safe-area-inset-bottom);
 }
 
-/* HEADER */
 header {
   padding: 10px 2px 12px;
 }
@@ -43,17 +42,14 @@ h1 {
   font-size: 18px;
   margin: 0;
   font-weight: 650;
-  letter-spacing: 0.2px;
 }
 
 .sub {
   margin-top: 4px;
   font-size: 13px;
   color: var(--muted);
-  line-height: 1.35;
 }
 
-/* INPUT */
 textarea {
   width: 100%;
   min-height: 110px;
@@ -71,7 +67,6 @@ textarea:focus {
   border-color: var(--accent);
 }
 
-/* BUTTONS */
 .action {
   margin-top: 10px;
 }
@@ -92,7 +87,6 @@ button:active {
   transform: scale(0.99);
 }
 
-/* RESULTS */
 .results {
   flex: 1;
   overflow-y: auto;
@@ -100,7 +94,6 @@ button:active {
   padding-bottom: 12px;
 }
 
-/* LINKS */
 .item {
   display: block;
   padding: 12px;
@@ -118,14 +111,12 @@ button:active {
   border-color: var(--accent);
 }
 
-/* CLICKED LINK */
 .item.visited {
   border-color: #2ecc71;
   color: #7dffb2;
   background: rgba(46, 204, 113, 0.08);
 }
 
-/* EMPTY */
 .empty {
   color: var(--muted);
   font-size: 14px;
@@ -195,7 +186,8 @@ function extract() {
   }
 
   if (ids.length === 0) {
-    const fallback = text.match(/\b\d{5,7}\b/g);
+    // ✅ FIXED: now supports 8+ digit IDs
+    const fallback = text.match(/\b\d{5,}\b/g);
     if (fallback) ids = fallback;
   }
 
